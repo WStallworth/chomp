@@ -1,1 +1,1 @@
-print("Hello World")
+print("Go Navy! Beat Army")
