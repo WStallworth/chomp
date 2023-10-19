@@ -48,13 +48,41 @@ def draw_background(surf):
 
 
 def draw_fishes(surf):
-    
+    text = custom_font.render("Chomp",True,(255,0,0))
+    #Load fish tiles from sprites
+    green_fish = pygame.image.load("assets/sprites/green_fish.png").convert()
+    green_fish.set_colorkey((0,0,0)) # Set transparency
+    num_green = random.randint(1,5)
+    for _ in range(num_green):
+        x = random.randint(0,SCREEN_WIDTH-TILE_SIZE)
+        y = random.randint(text.get_height(),SCREEN_HEIGHT-(TILE_SIZE*2))
+        flip = random.randint(0,1)
+        if flip == 0:
+            surf.blit(green_fish,(x,y))
+        else:
+            #green_fish = pygame.transform.flip(green_fish,True,False)
+            surf.blit(pygame.transform.flip(green_fish,True,False), (x, y))
 
+    #puffer fish
+    puffer_fish = pygame.image.load("assets/sprites/puffer_fish.png").convert()
+    puffer_fish.set_colorkey((0, 0, 0))  # Set transparency
+    num_puffer = random.randint(1, 5)
+    for _ in range(num_puffer):
+        x = random.randint(0, SCREEN_WIDTH - TILE_SIZE)
+        y = random.randint(text.get_height(), SCREEN_HEIGHT - (TILE_SIZE * 2))
+        flip = random.randint(0,1)
+        if flip == 0:
+            surf.blit(puffer_fish, (x, y))
+        else:
+            #puffer_fish = pygame.transform.flip(puffer_fish,True,False)
+            surf.blit(pygame.transform.flip(puffer_fish,True,False), (x, y))
 
 #Main Loop:
 running = True
 background = screen.copy()
 draw_background(background)
+
+draw_fishes(background)
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
